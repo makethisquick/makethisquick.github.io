@@ -256,6 +256,7 @@
 
                 if (emptyFields <= 2) {
                     e.preventDefault();
+<<<<<<< HEAD
                     form = document.forms['fh5co-header-subscribe']
                     fetch(url, { 
                         method: 'POST', 
@@ -266,6 +267,17 @@
                             window.location.replace("https://www.makethisquick.com/thankyou.html")
                         })
                         .catch(error => console.error('Error!', error.message))
+=======
+                    var jqxhr = $.ajax({
+                        url: url,
+                        method: "POST",
+                        dataType: "json",
+                        data: $form.serializeObject()
+                    }).success(
+                        // do something
+                        window.location.replace("https://www.makethisquick.com/thankyou.html") //redirect to home page
+                    );
+>>>>>>> 7b7fad4a25b2637ae3d7d428c8e3a4e0d866ae08
                 }
 
             })
