@@ -172,7 +172,7 @@
                         <label for="rafflecheck">I give MakeThisQuick LLC full permission to register my business and I
                             understand this is a non-refundable transaction due to labor and state fees.</label><br>
                         <input type="checkbox" id="TermsOfServiceCheck" name="TermsOfServiceCheck"
-                            value="I agree to MakeThisQuick LLC's terms of service." required>
+                            value="I agree to MakeThisQuick LLC's terms of service on MakeThisQuick.com" required>
                         <label for="rafflecheck">I agree with <a
                                 href="https://makethisquick.com/policies/termsofservice.html">MakeThisQuick's Terms of
                                 Service.</a></label><br>
@@ -258,7 +258,7 @@
                     e.preventDefault();
                     var jqxhr = $.ajax({
                         url: url,
-                        method: "GET",
+                        method: "POST",
                         dataType: "json",
                         data: $form.serializeObject()
                     }).success(
