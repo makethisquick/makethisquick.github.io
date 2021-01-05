@@ -221,11 +221,7 @@
     <!-- Main -->
     <script src="rafflejs/main.js"></script>
     <script>
-        var $form = $('form#fh5co-header-subscribe'),
-            url = 'https://script.google.com/macros/s/AKfycbyREF2J5PzHQ-EXtgOorUamBz-AgLNCKtC7ASGuU5YKq_2JH2mD/exec'
 
-
-        try {
             $('#mc-embedded-subscribe').on('click', function (e) {
                 var emptyFields = 0;
                 $(":input").each(function () {
@@ -256,8 +252,8 @@
 
                 if (emptyFields <= 2) {
                     e.preventDefault();
-<<<<<<< HEAD
                     form = document.forms['fh5co-header-subscribe']
+                    url = 'https://script.google.com/macros/s/AKfycbyREF2J5PzHQ-EXtgOorUamBz-AgLNCKtC7ASGuU5YKq_2JH2mD/exec'
                     fetch(url, { 
                         method: 'POST', 
                         body: new FormData(form)
@@ -267,25 +263,10 @@
                             window.location.replace("https://www.makethisquick.com/thankyou.html")
                         })
                         .catch(error => console.error('Error!', error.message))
-=======
-                    var jqxhr = $.ajax({
-                        url: url,
-                        method: "POST",
-                        dataType: "json",
-                        data: $form.serializeObject()
-                    }).success(
-                        // do something
-                        window.location.replace("https://www.makethisquick.com/thankyou.html") //redirect to home page
-                    );
->>>>>>> 7b7fad4a25b2637ae3d7d428c8e3a4e0d866ae08
                 }
 
             })
-        } catch (err) {
-            e.preventDefault();
-            console.log("Something weird happened... check it out: " + err)
 
-        }
     </script>
 </body>
 
