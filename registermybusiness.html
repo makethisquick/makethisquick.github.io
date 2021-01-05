@@ -180,9 +180,8 @@
                         <div style="position: absolute; left: -5000px;" aria-hidden="true">
                             <input type="text" name="b_2318398df00414263f1aaa22f_617a3f938e" tabindex="-1" value="">
                         </div>
-                        <button type="submit" value="SubmitBusinessRegistration" name="submitraffle"
-                            id="mc-embedded-subscribe" class="btn btn-primary button">Submit Business
-                            Registration</button>
+                        <button type="submit" value="SubmitRaffleEntry" name="submitraffle" id="mc-embedded-subscribe"
+                            class="btn btn-primary button">Submit Raffle Entry</button>
 
                     </div>
                 </div>
@@ -213,67 +212,67 @@
     <script src="https://use.fontawesome.com/55b73bf748.js"></script>
     <script src="rafflejs/jquery.serialize-object.min.js"></script>
     <!-- jQuery -->
-	<script src="rafflejs/jquery.min.js"></script>
-	<script src="rafflejs/jquery.serialize-object.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="rafflejs/jquery.easing.1.3.js"></script>
-	<!-- Waypoints -->
-	<script src="rafflejs/jquery.waypoints.min.js"></script>
-	<!-- Main -->
-	<script src="rafflejs/main.js"></script>
+    <script src="rafflejs/jquery.min.js"></script>
+    <script src="rafflejs/jquery.serialize-object.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="rafflejs/jquery.easing.1.3.js"></script>
+    <!-- Waypoints -->
+    <script src="rafflejs/jquery.waypoints.min.js"></script>
+    <!-- Main -->
+    <script src="rafflejs/main.js"></script>
     <script>
         var $form = $('form#fh5co-header-subscribe'),
             url = 'https://script.google.com/macros/s/AKfycbyREF2J5PzHQ-EXtgOorUamBz-AgLNCKtC7ASGuU5YKq_2JH2mD/exec'
 
 
-try {
-        $('#mc-embedded-subscribe').on('click', function (e) {
-            var emptyFields = 0;
-            $(":input").each(function () {
-                if ($(this).val() === "") {
-                    emptyFields = emptyFields + 1;
-                    console.log(emptyFields);
-                }
-            });
+        try {
+            $('#mc-embedded-subscribe').on('click', function (e) {
+                var emptyFields = 0;
+                $(":input").each(function () {
+                    if ($(this).val() === "") {
+                        emptyFields = emptyFields + 1;
+                        console.log(emptyFields);
+                    }
+                });
 
 
 
-            $(":checkbox").each(function () {
-                console.log("checking checkbox's: ");
-                if (!$(this).is(":checked")) {
-                    emptyFields = emptyFields + 1;
-                    console.log(emptyFields - 1 + "checkbox's are empty");
-                }
-            });
+                $(":checkbox").each(function () {
+                    console.log("checking checkbox's: ");
+                    if (!$(this).is(":checked")) {
+                        emptyFields = emptyFields + 1;
+                        console.log(emptyFields - 1 + "checkbox's are empty");
+                    }
+                });
 
-           
+
                 if ($("#BusinessType").val() === "") {
                     emptyFields = emptyFields + 1;
                     console.log("Business type drop down is empty");
                 }
-            
 
-            console.log("Total empty fields: " + emptyFields);
 
-            if (emptyFields <= 2) {
-                e.preventDefault();
-                var jqxhr = $.ajax({
-                    url: url,
-                    method: "GET",
-                    dataType: "json",
-                    data: $form.serializeObject()
-                }).success(
-                    // do something
-                    window.location.replace("https://www.makethisquick.com/thankyou.html") //redirect to home page
-                );
-            }
+                console.log("Total empty fields: " + emptyFields);
 
-        })
-    } catch(err) {
-        e.preventDefault();
-        console.log("Something weird happened... check it out: "+err)
-        
-    }
+                if (emptyFields <= 2) {
+                    e.preventDefault();
+                    var jqxhr = $.ajax({
+                        url: url,
+                        method: "GET",
+                        dataType: "json",
+                        data: $form.serializeObject()
+                    }).success(
+                        // do something
+                        window.location.replace("https://www.makethisquick.com/thankyou.html") //redirect to home page
+                    );
+                }
+
+            })
+        } catch (err) {
+            e.preventDefault();
+            console.log("Something weird happened... check it out: " + err)
+
+        }
     </script>
 </body>
 
