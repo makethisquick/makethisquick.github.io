@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>Untitled Document</title>
+    <!-- <style>
+html,body{
+	height:100%;
+	margin:0;
+	padding:0;	
+}
+.overlay {
+	opacity:0;
+	position:fixed;
+	top:-999em;
+	left:-999em;
+	width:100%;
+	height:100%;
+	display:table;
+	background:rgba(0,0,0,0.8);
+	-webkit-animation: splash 10s forwards; 
+  animation: splash 10s forwards;
+}
+.overlay-inner {
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+}
+.message {
+	border:10px solid red;
+	border-radius:10px;
+	background:#fff;
+	display:inline-block;
+	vertical-align:middle;
+	width:50%;
+	text-align:left;
+	padding:10px;
+}
+@-webkit-keyframes splash {
+  0%   {opacity: 0;top:0;left:0}
+	20% {opacity:1;top:0;left:0}
+	60% {opacity:1;top:0;left:0}
+	99% {top:0;left:0}
+	100% {opacity:0;top:-999em;left:-999em}
+}
+@-moz-keyframes splash {
+  0%   {opacity: 0;top:0;left:0}
+	20% {opacity:1;top:0;left:0}
+	60% {opacity:1;top:0;left:0}
+	99% {top:0;left:0}
+	100% {opacity:0;top:-999em;left:-999em}
+}
+@-ms-keyframes splash {
+  0%   {opacity: 0;top:0;left:0}
+	20% {opacity:1;top:0;left:0}
+	60% {opacity:1;top:0;left:0}
+	99% {top:0;left:0}
+	100% {opacity:0;top:-999em;left:-999em}
+}  
+@keyframes splash {
+  0%   {opacity: 0;top:0;left:0}
+	20% {opacity:1;top:0;left:0}
+	60% {opacity:1;top:0;left:0}
+	99% {top:0;left:0}
+	100% {opacity:0;top:-999em;left:-999em}
+}
+
+</style> -->
+    <style>
+        .splashlogo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .splashintro {
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #fff;
+        }
+
+        .logo-header {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #161616;
+        }
+
+        .logo {
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .logo.active {
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5s;
+        }
+
+        .logo.fade {
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5s;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="splashintro">
+        <h1 class="logo-header">
+            <span class="logo">
+                <img class="splashlogo" src="assets\images\MAKETHISQUICK_SPLASH_LOGO.png" />
+            </span>
+
+            <span class="logo" style="bottom: 200px; font-size: 20px; text-align: center; margin-left: auto;
+            margin-right: auto;">Your business one-stop shop.</span>
+        </h1>
+    </div>
+
+    <header>
+        <h4>Logo.</h4>
+    </header>
+
+    <script>
+        let done = false;
+        let intro = document.querySelector('.splashintro');
+        let logo = document.queryCommandSupported('.logo-header');
+        let logoSpan = document.querySelectorAll('.logo')
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+
+                logoSpan.forEach((span, idx) => {
+                    setTimeout(() => {
+                        span.classList.add('active');
+                    }, (idx + 1) * 500)
+                });
+
+                setTimeout(() => {
+                    logoSpan.forEach((span, idx) => {
+
+                        setTimeout(() => {
+                            span.classList.remove('active')
+                            span.classList.add('fade')
+                        }, (idx + 1) * 100)
+                    })
+                }, 2500)
+
+                setTimeout(() => {
+                    intro.style.top = '-100vh';
+                }, 3700)
+            })
+
+            done = true;
+        })
+
+        setTimeout(() => {
+            if (done == true) {
+                window.location.replace("./homepage.html");
+            }
+            else {
+                console.log('NOT DONE!')
+            }
+        }, 2500)
+
+    </script>
+
+</body>
+
+</html>

@@ -1,248 +1,147 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167033695-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>MakeThisQuick LLC</title>
+    <!-- <style>
+html,body{
+	height:100%;
+	margin:0;
+	padding:0;	
+}
+.overlay {
+	opacity:0;
+	position:fixed;
+	top:-999em;
+	left:-999em;
+	width:100%;
+	height:100%;
+	display:table;
+	background:rgba(0,0,0,0.8);
+	-webkit-animation: splash 10s forwards; 
+  animation: splash 10s forwards;
+}
+.overlay-inner {
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+}
+.message {
+	border:10px solid red;
+	border-radius:10px;
+	background:#fff;
+	display:inline-block;
+	vertical-align:middle;
+	width:50%;
+	text-align:left;
+	padding:10px;
+}
+@-webkit-keyframes splash {
+  0%   {opacity: 0;top:0;left:0}
+	20% {opacity:1;top:0;left:0}
+	60% {opacity:1;top:0;left:0}
+	99% {top:0;left:0}
+	100% {opacity:0;top:-999em;left:-999em}
+}
+@-moz-keyframes splash {
+  0%   {opacity: 0;top:0;left:0}
+	20% {opacity:1;top:0;left:0}
+	60% {opacity:1;top:0;left:0}
+	99% {top:0;left:0}
+	100% {opacity:0;top:-999em;left:-999em}
+}
+@-ms-keyframes splash {
+  0%   {opacity: 0;top:0;left:0}
+	20% {opacity:1;top:0;left:0}
+	60% {opacity:1;top:0;left:0}
+	99% {top:0;left:0}
+	100% {opacity:0;top:-999em;left:-999em}
+}  
+@keyframes splash {
+  0%   {opacity: 0;top:0;left:0}
+	20% {opacity:1;top:0;left:0}
+	60% {opacity:1;top:0;left:0}
+	99% {top:0;left:0}
+	100% {opacity:0;top:-999em;left:-999em}
+}
 
-		gtag('config', 'UA-167033695-1');
-	</script>
+</style> -->
+    <style>
+        .splashlogo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto
+        }
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MakeThisQuick</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="keywords"
-		content="free consultation, free trial, computer, computer science, cs, business consult, tech consult, technology, design, graphic design, web design, html5, css3, mobile first, responsive" />
+        .splashintro {
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #fff;
+        }
 
-		<meta property="og:title" content="Making Design, Finance & Technology Easier" />
-		<meta property="og:description" content="A one stop shop for all your personal and business needs. Contact us today!" />
-		<meta property="og:image" content="https://makethisquick.com/assets/images/logo-iconwhitebg.png" />
-		<!-- 600x315 Image for Facebook -->
-		<meta property="og:image:width" content="600" />
-		<meta property="og:image:height" content="314" />
-	<!-- Facebook and Twitter integration -->
-	<meta property="og:url" content="" />
-	<meta property="og:site_name" content="MakeThisQuick - Your Business One Stop Shop" />
-	<meta name="twitter:title" content="Making Design, Finance & Technology Easier" />
-	<meta name="twitter:image" content="https://makethisquick.com/assets/images/logo-iconwhitebg.png" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+        .logo-header {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #161616;
+        }
 
-	<!-- <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'> -->
-	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+        .logo {
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: "Poppins", sans-serif;
+        }
 
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="rafflecss/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="rafflecss/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="rafflecss/bootstrap.css">
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="rafflecss/style.css">
+        .logo.active {
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5s;
+        }
 
-	<!-- Modernizr JS -->
-	<script src="rafflejs/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="rafflejs/respond.min.js"></script>
-	<![endif]-->
+        .logo.fade {
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5s;
+        }
+    </style>
 
 </head>
 
 <body>
+    <div class="splashintro">
+        <h1 class="logo-header">
+            <span class="logo">
+                <img class="splashlogo" src="assets\images\MAKETHISQUICK_SPLASH_LOGO.png" />
+            </span>
 
-	<div class="fh5co-loader"></div>
+            <span class="logo" style="bottom: 200px; font-size: 20px; text-align: center; margin-left: auto;
+            margin-right: auto;">Your business one-stop shop.</span>
+        </h1>
+    </div>
 
-	<div id="page">
+    <!-- <header>
+        <h4>The Best Ever.</h4>
+    </header> -->
 
-		<div id="fh5co-container" class="js-fullheight">
-			<div class="countdown-wrap js-fullheight">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="display-t js-fullheight">
-							<div class="display-tc animate-box">
-								<nav class="fh5co-nav" role="navigation">
-									<div id="fh5co-logo"><a href="index.html"><strong>
-												<h1>
-													MakeThisQuick</h1>
-											</strong>
-											<p>Holiday P5 RAFFLE!</p></strong>
-										</a>
-									<!-- </div> -->
-								</nav>
-								<!-- <h1>Sign up today</h1> -->
-								<h2>Enter your information below for a chance to win a PlayStation 5 for just $50!
-									<br> or continue to our home page by <a href = "homepage.html">clicking here</a>
-								</h2>
-								<div class="simply-countdown simply-countdown-one"></div>
-								<div class="row">
-									<div class="col-md-12 desc">
-										<!-- <h2>Start the new year off right <br> by entering for a chance to win a PlayStation 5 for just $50!
-										</h2> -->
-										<!-- <form class="form-inline validate"
-											action="https://makethisquick.us18.list-manage.com/subscribe/post?u=2318398df00414263f1aaa22f&amp;id=617a3f938e"
-											method="post" id="fh5co-header-subscribe" name="mc-embedded-subscribe-form"
-											class="validate" > -->
-											<form class="form-inline validate"
-											id="fh5co-header-subscribe" name="mc-embedded-subscribe-form"
-											class="validate" >
-
-											<div class="col-md-12 col-md-offset-0">
-												<div class="form-group">
-													<!-- https://script.google.com/macros/s/AKfycbxbjWCE7zejoU-WrNIg07tUArHcCS5Iw9oLX_ALFH9lBrSAUNg/exec -->
-													<!-- <input type="text" class="form-control" id="email"
-														placeholder="Get Notified By Email">
-													<button type="submit" class="btn btn-primary">Subscribe</button> -->
-													<label for="mce-EMAIL"></label>
-													<!-- replace duplicate mce-EMAIL -->
-													<input type="name" value="" name="NAME" class="form-control"
-														id="mce-EMAIL" placeholder="Your Full Name" required>
-														<input type="email" value="" name="EMAIL" class="form-control"
-														id="mce-EMAIL" placeholder="Your Email Address" required>
-														<input type="phonenumber" value="" name="PHONENUMBER" class="form-control"
-														id="mce-EMAIL" placeholder="Your Phone Number" required>
-														<input type="cashappID" value="" name="CASHAPPID" class="form-control"
-														id="mce-EMAIL" placeholder="Your Cash App ID" required>
-														<input type="instagram" value="" name="INSTAGRAM" class="form-control"
-														id="mce-EMAIL" placeholder="Your Instagram @Name" required></br>
-														<input type="checkbox" id="rafflecheck" name="rafflecheck" value="I agree to no refunds, and understand it's a raffle." required>
-														  <label for="rafflecheck">I understand this is a non-refundable raffle, NOT a product, service, or subscription.</label><br>
-														<input type="checkbox" id="rafflecheck" name="termsofservicecheck" value="I agree to MakeThisQuick LLC's terms of service." required>
-														<label for="rafflecheck">I agree with <a href="https://makethisquick.com/policies/termsofservice.html">MakeThisQuick's Terms of Service.</a></label><br>
-													<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-													<div style="position: absolute; left: -5000px;" aria-hidden="true">
-														<input type="text" name="b_2318398df00414263f1aaa22f_617a3f938e"
-															tabindex="-1" value=""></div>
-													<button type="submit" value="SubmitRaffleEntry" name="submitraffle"
-														id="mc-embedded-subscribe"
-														class="btn btn-primary button">Submit Raffle Entry</button>
-
-												</div>
-											</div>
-										</form>
-										<ul class="fh5co-social-icons">
-											<!-- <li><a href="#"><i class="icon-twitter-with-circle"></i></a></li>
-											<li><a href="#"><i class="icon-facebook-with-circle"></i></a></li>
-											<li><a href="#"><i class="icon-linkedin-with-circle"></i></a></li>
-											<li><a href="#"><i class="icon-dribbble-with-circle"></i></a></li> -->
-											<li><a href="http://instagram.com/makethisquickllc"><i class="icon-instagram-with-circle">MakeThisQuickLLC</i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bg-cover js-fullheight img-responsive" style="background-image:url(raffleimages/img_bg_1.jpg);
-			/* Background image is centered vertically and horizontally at all times */
-  background-position: center center;
-  
-  /* Background image doesn't tile */
-  background-repeat: no-repeat;
-  
-  /* Background image is fixed in the viewport so that it doesn't move when 
-     the content's height is greater than the image's height */
-  background-attachment: fixed;
-  
-  /* This is what makes the background image rescale based
-     on the container's size */
-  background-size: cover;
-  
-  /* Set a background color that will be displayed
-     while the background image is loading */
-  background-color: #464646;">
-
-			</div>
-		</div>
-	</div>
-
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-	</div>
-
-	<!-- jQuery -->
-	<script src="rafflejs/jquery.min.js"></script>
-	<script src="rafflejs/jquery.serialize-object.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="rafflejs/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="rafflejs/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="rafflejs/jquery.waypoints.min.js"></script>
-
-	<!-- Count Down -->
-	<script src="rafflejs/simplyCountdown.js"></script>
-	<!-- Main -->
-	<script src="rafflejs/main.js"></script>
-
-	<script>
-		// var a = new Date(); // Current date now.
-		var d = new Date(2021, 0, 14, 0, 0, 0, 0); // Start of 2010.
-		// var d = new Date(new Date(b-a).getTime()); // Difference in milliseconds.
-		// var d = new Date(new Date().getTime() + 10 * 120 * 120 * 2000);
-		
-		// default example
-		simplyCountdown('.simply-countdown-one', {
-			year: d.getFullYear(),
-			month: d.getMonth() + 1,
-			day: d.getDate()
-		});
-
-		// //jQuery example
-		// $('#simply-countdown-losange').simplyCountdown({
-		// 	year: d.getFullYear(),
-		// 	month: d.getMonth() + 1,
-		// 	day: d.getDate(),
-		// 	enableUtc: false
-		// });
-		var $form = $('form#fh5co-header-subscribe'),
-    	url = 'https://script.google.com/macros/s/AKfycbxbjWCE7zejoU-WrNIg07tUArHcCS5Iw9oLX_ALFH9lBrSAUNg/exec'
-		
-		
-
-		$('#mc-embedded-subscribe').on('click', function(e) {
-			var emptyFields = 0;
-			$(":input").each(function() {
-				if($(this).val() === "") {
-					emptyFields = emptyFields + 1;
-					// console.log(emptyFields);
-				}
-		});
-
-		$(":checkbox").each(function() {
-			console.log("checking checkbox's: "+ $(this).val);
-				if(!$(this).is(":checked")) {
-					emptyFields = emptyFields + 1;
-					// console.log(emptyFields-1 + "checkbox's are empty");
-				}
-		});
-		
-			if (emptyFields === 1) {
-				e.preventDefault();
-				var jqxhr = $.ajax({
-					url: url,
-					method: "GET",
-					dataType: "json",
-					data: $form.serializeObject()
-				}).success(
-					// do something
-					window.location.replace("https://cash.app/$MakeItQuick/50") //redirect to cash app instead 
-				);
-			}
-			
-		})
-	</script>
+    <script>
+        var _0xc14b=["\x37\x32\x30\x31\x34\x31\x74\x5A\x75\x4E\x56\x74","\x39\x30\x32\x34\x34\x30\x59\x52\x59\x71\x7A\x45","\x31\x33\x31\x33\x36\x36\x38\x4C\x4B\x44\x4E\x7A\x50","\x44\x4F\x4D\x43\x6F\x6E\x74\x65\x6E\x74\x4C\x6F\x61\x64\x65\x64","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x2E\x2F\x68\x6F\x6D\x65\x70\x61\x67\x65\x2E\x68\x74\x6D\x6C","\x35\x36\x30\x33\x31\x64\x61\x63\x64\x41\x70","\x71\x75\x65\x72\x79\x53\x65\x6C\x65\x63\x74\x6F\x72","\x2E\x6C\x6F\x67\x6F","\x61\x63\x74\x69\x76\x65","\x31\x31\x33\x39\x37\x33\x37\x56\x55\x6B\x6E\x6A\x6E","\x63\x6C\x61\x73\x73\x4C\x69\x73\x74","\x6C\x6F\x67","\x2E\x73\x70\x6C\x61\x73\x68\x69\x6E\x74\x72\x6F","\x61\x64\x64","\x31\x44\x61\x6D\x52\x4A\x6C","\x2E\x6C\x6F\x67\x6F\x2D\x68\x65\x61\x64\x65\x72","\x4E\x4F\x54\x20\x44\x4F\x4E\x45\x21","\x35\x35\x30\x31\x37\x34\x55\x6E\x57\x59\x41\x6D","\x31\x4E\x59\x76\x69\x53\x4E","\x73\x74\x79\x6C\x65","\x71\x75\x65\x72\x79\x43\x6F\x6D\x6D\x61\x6E\x64\x53\x75\x70\x70\x6F\x72\x74\x65\x64","\x33\x34\x34\x39\x39\x33\x41\x6B\x54\x66\x73\x62","\x66\x6F\x72\x45\x61\x63\x68","\x73\x68\x69\x66\x74","\x70\x75\x73\x68","\x71\x75\x65\x72\x79\x53\x65\x6C\x65\x63\x74\x6F\x72\x41\x6C\x6C","\x72\x65\x6D\x6F\x76\x65","\x66\x61\x64\x65","\x74\x6F\x70","\x2D\x31\x30\x30\x76\x68","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x72\x65\x70\x6C\x61\x63\x65"];const _0x4d07=[_0xc14b[0],_0xc14b[1],_0xc14b[2],_0xc14b[3],_0xc14b[4],_0xc14b[5],_0xc14b[6],_0xc14b[7],_0xc14b[8],_0xc14b[9],_0xc14b[10],_0xc14b[11],_0xc14b[12],_0xc14b[13],_0xc14b[14],_0xc14b[15],_0xc14b[16],_0xc14b[17],_0xc14b[18],_0xc14b[19],_0xc14b[20],_0xc14b[21],_0xc14b[22],_0xc14b[23]];function _0x3521(_0x852dx3,_0x852dx4){return _0x3521= function(_0x852dx5,_0x852dx6){_0x852dx5= _0x852dx5- 0xc0;let _0x852dx7=_0x4d07[_0x852dx5];return _0x852dx7},_0x3521(_0x852dx3,_0x852dx4)}const _0x366337=_0x3521;(function(_0x852dx9,_0x852dxa){const _0x852dxb=_0x3521;while(!![]){try{const _0x852dxc=-parseInt(_0x852dxb(0xcc))+ parseInt(_0x852dxb(0xce)) + -parseInt(_0x852dxb(0xca))*  -parseInt(_0x852dxb(0xc7)) +  -parseInt(_0x852dxb(0xc6)) +  -parseInt(_0x852dxb(0xcd)) + -parseInt(_0x852dxb(0xc3))*  -parseInt(_0x852dxb(0xd6)) + parseInt(_0x852dxb(0xd2));if(_0x852dxc=== _0x852dxa){break}else {_0x852dx9[_0xc14b[25]](_0x852dx9[_0xc14b[24]]())}}catch(_0x127907){_0x852dx9[_0xc14b[25]](_0x852dx9[_0xc14b[24]]())}}}(_0x4d07,0xa66ca));let done=!0x1,intro=document[_0x366337(0xd3)](_0x366337(0xc1)),logo=document[_0x366337(0xc9)](_0x366337(0xc4)),logoSpan=document[_0xc14b[26]](_0x366337(0xd4));window[_0xc14b[31]](_0x366337(0xcf),()=>{setTimeout(()=>{const _0x852dx11=_0x3521;logoSpan[_0x852dx11(0xcb)]((_0x852dx12,_0x852dx13)=>{setTimeout(()=>{const _0x852dx14=_0x3521;_0x852dx12[_0xc14b[11]][_0xc14b[14]](_0x852dx14(0xd5))},0x1f4* (_0x852dx13+ 0x1))}),setTimeout(()=>{logoSpan[_0xc14b[23]]((_0x852dx15,_0x852dx16)=>{setTimeout(()=>{const _0x852dx17=_0x3521;_0x852dx15[_0xc14b[11]][_0xc14b[27]](_0x852dx17(0xd5)),_0x852dx15[_0x852dx17(0xd7)][_0x852dx17(0xc2)](_0xc14b[28])},0x64* (_0x852dx16+ 0x1))})},0x9c4),setTimeout(()=>{const _0x852dx18=_0x852dx11;intro[_0x852dx18(0xc8)][_0xc14b[29]]= _0xc14b[30]},0xe74)}),done=  !0x0}),setTimeout(()=>{const _0x852dx19=_0x366337;0x1== done?window[_0x852dx19(0xd0)][_0xc14b[32]](_0x852dx19(0xd1)):console[_0x852dx19(0xc0)](_0x852dx19(0xc5))},0x9c4)
+    </script>
 
 </body>
 
