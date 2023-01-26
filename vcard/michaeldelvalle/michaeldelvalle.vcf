@@ -1,0 +1,21 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Delvalle;Michael;;;
+FN:Michael Delvalle
+ORG:MakeThisQuick LLC
+ADR;TYPE=WORK:
+TITLE:Technology Solutions Architect
+TEL;TYPE=CELL:+1347-922-5763
+TEL;TYPE=WORK:+1513-716-5898
+TEL;TYPE=HOME:
+TEL;TYPE=MSG:
+EMAIL;TYPE=WORK:makethisquick@gmail.com
+URL;TYPE=Digital Business Card:https://mike.makethisquick.com
+URL:https://makethisquick.com
+URL;TYPE=Website:https://makethisquick.com
+URL;TYPE=Cash App:https://cash.app/makeitquick
+URL;TYPE=LinkedIn:https://linkedin.com/michael-delvalle
+KEY;TYPE=PGP;ENCODING=b:
+NOTE:MakeThisQuick LLC is a technology-driven solution company focused on resolving your technical challenges. We put our clients first, empowering you with the ability to achieve your personal and business goals quicker than the average. Our professionals are here to help you achieve your goals via in-person or virtual consultations.
+UID:EnBizCard-100628538
+END:VCARD
