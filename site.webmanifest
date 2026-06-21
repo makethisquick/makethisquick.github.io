@@ -1,0 +1,14 @@
+{
+  "name": "MakeThisQuick",
+  "short_name": "MakeThisQuick",
+  "description": "AI digital-transformation studio for small business — strategy, custom software, automation, and design.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#060A18",
+  "theme_color": "#060A18",
+  "icons": [
+    { "src": "/assets/img/icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
+    { "src": "/assets/img/icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" }
+  ]
+}
