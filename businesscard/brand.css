@@ -1,0 +1,118 @@
+/* =================================================================
+   MakeThisQuick — digital business card brand skin
+   Layers over the existing vCard template (style.min.css) to match
+   makethisquick.com: dark "blueprint" surface, cobalt accent,
+   Bricolage / Inter / Space Mono type. Override-only (uses !important
+   to beat the template's inline colors) so it's fully reversible.
+   ================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --bc-ink: #060A18;
+  --bc-surface: #0E1530;
+  --bc-surface-2: #141C3D;
+  --bc-line: #20294D;
+  --bc-text: #EEF2FF;
+  --bc-muted: #9098BE;
+  --bc-accent: #2D5BFF;
+  --bc-accent-2: #5B82FF;
+}
+
+/* ---- page + card surface ---- */
+html {
+  background: var(--bc-ink) !important;
+  background-image:
+    linear-gradient(#161E3C 1px, transparent 1px),
+    linear-gradient(90deg, #161E3C 1px, transparent 1px) !important;
+  background-size: 48px 48px !important;
+}
+#body, body {
+  background: var(--bc-surface) !important;
+  color: var(--bc-text) !important;
+  font-family: "Inter", system-ui, sans-serif !important;
+}
+@media (min-width: 34rem) {
+  body { margin-block: 2rem !important; border: 1px solid var(--bc-line) !important;
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,.7) !important; border-radius: 22px !important; }
+  header, .headerImgC, #cover { border-top-left-radius: 22px !important; border-top-right-radius: 22px !important; }
+}
+main { background: transparent !important; }
+
+/* ---- cover + top actions ---- */
+.headerImgC { position: relative !important; }
+#cover { height: 16rem !important; filter: saturate(1.02) contrast(1.02); }
+.headerImgC::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(6,10,24,.15) 0%, rgba(6,10,24,.05) 45%, var(--bc-surface) 100%) !important;
+}
+#topActions a { line-height: 0 !important; }
+#topActions a .topAction {
+  width: 2.5rem !important; height: 2.5rem !important; box-sizing: border-box;
+  display: grid !important; place-items: center; padding: 0 !important;
+  background: rgba(6,10,24,.5); border: 1px solid rgba(255,255,255,.16);
+  border-radius: 12px; backdrop-filter: blur(6px);
+}
+#topActions a .topAction svg { width: 1.35rem !important; height: 1.35rem !important; display: block; }
+
+/* ---- profile photo: sits BELOW the cover (no overlap) ---- */
+#profilePhoto {
+  border-radius: 24px !important;
+  border: 3px solid var(--bc-accent) !important;
+  box-shadow: 0 16px 40px -14px rgba(0,0,0,.6) !important;
+  margin-top: 1.5rem !important;
+}
+
+/* ---- identity text ---- */
+.textColor, .cardColor, #info, #info * { color: var(--bc-text) !important; }
+.name {
+  font-family: "Bricolage Grotesque", sans-serif !important;
+  font-weight: 700 !important; letter-spacing: -.02em !important; font-size: 1.7rem !important;
+}
+.jobtitle { color: var(--bc-accent-2) !important; font-weight: 600 !important; margin-top: .25rem !important; }
+.bizname {
+  font-family: "Space Mono", monospace !important; text-transform: uppercase !important;
+  letter-spacing: .14em !important; font-size: .68rem !important; opacity: 1 !important;
+  color: var(--bc-muted) !important; margin-top: .6rem !important;
+}
+#info { border-left-color: var(--bc-accent) !important; border-left-style: solid !important; padding-left: .9rem; }
+.sub { color: var(--bc-muted) !important; opacity: 1 !important; line-height: 1.6 !important; }
+
+/* ---- primary "save contact" ---- */
+#cta {
+  background: var(--bc-accent) !important; color: #fff !important;
+  box-shadow: 0 12px 30px -10px rgba(45,91,255,.7) !important; font-weight: 600 !important;
+}
+#cta .iconColor, #cta p { color: #fff !important; }
+
+/* ---- round action buttons (call / email / web) ---- */
+.actions .actionBtn a {
+  background: var(--bc-accent) !important;
+  box-shadow: 0 10px 24px -12px rgba(45,91,255,.8) !important;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.actions .actionBtn a:hover { transform: translateY(-2px); }
+.actions .actionBtn .iconColor svg path,
+.actions .actionBtn a svg path[style*="stroke"] { stroke: #fff !important; }
+.actions .actionBtn p { color: var(--bc-muted) !important; }
+
+/* ---- secondary buttons (social / pay) -> uniform dark chips, keep platform icon color ---- */
+.actions.secondary .secBtn a {
+  background: var(--bc-surface-2) !important;
+  border: 1px solid var(--bc-line) !important;
+  box-shadow: none !important;
+  transition: transform .2s ease, border-color .2s ease;
+}
+.actions.secondary .secBtn a:hover { transform: translateY(-2px); border-color: var(--bc-accent) !important; }
+
+/* ---- modal (share / qr / copy) ---- */
+#modal { background: var(--bc-surface) !important; border-top: 1px solid var(--bc-line) !important;
+  border-top-left-radius: 22px; border-top-right-radius: 22px; }
+#modal .textColor, #qrView, #qrView * { color: var(--bc-text) !important; }
+#copyURL, #dlKey { background: var(--bc-accent) !important; color: #fff !important; }
+#copyURL .iconColor, #dlKey .iconColor, #copyURL span, #dlKey span { color: #fff !important; }
+#qr { background: #fff !important; border-radius: 14px !important; }
+.closeColor svg path[style*="stroke"] { stroke: var(--bc-text) !important; }
+
+/* ---- footer (if present) ---- */
+footer, footer a { color: var(--bc-muted) !important; }
