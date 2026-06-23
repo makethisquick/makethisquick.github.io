@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="MakeThisQuick">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3D6BFF"/>
+      <stop offset="1" stop-color="#1B3DCC"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+  <!-- lightbulb glass -->
+  <circle cx="16" cy="13.6" r="6.6" fill="#fff"/>
+  <!-- screw base -->
+  <rect x="12.5" y="19.7" width="7" height="2.1" rx="0.9" fill="#fff"/>
+  <rect x="13.2" y="22.1" width="5.6" height="1.8" rx="0.9" fill="#fff"/>
+  <rect x="14.1" y="24.1" width="3.8" height="1.5" rx="0.75" fill="#fff"/>
+  <!-- amber filament -->
+  <path d="M13.2 13.8 L15.2 16.2 L16 11.6 L16.8 16.2 L18.8 13.8" fill="none"
+        stroke="#FF9E2C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

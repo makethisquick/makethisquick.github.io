@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sign your lease · MakeThisQuick</title>
+  <meta name="description" content="Review and e-sign your lease agreement.">
+  <meta name="theme-color" content="#060A18">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link href="../assets/css/site.css" rel="stylesheet">
+  <link href="assets/app.css" rel="stylesheet">
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="appbar">
+    <span class="appbar__brand">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2l8 4v5c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <b>Renter<span>Passport</span></b>
+    </span>
+    <div class="appbar__right"><span class="appbar__tag">Lease</span></div>
+  </header>
+
+  <main class="app-main" id="main">
+    <div class="shell">
+
+      <!-- intro -->
+      <section id="lease-intro">
+        <div class="step-head">
+          <span class="kicker" id="ctx-line">Final step</span>
+          <h2 tabindex="-1">Review &amp; sign your lease</h2>
+          <p>Your lease is prepared for secure electronic signature. Review the agreement, then sign — it takes about a minute.</p>
+        </div>
+
+        <div class="card card--raised">
+          <div style="display:flex;align-items:center;gap:.9rem">
+            <span class="slot__ico" style="width:46px;height:46px"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3h6l4 4v14H6V5a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v4h4M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <div style="flex:1;min-width:0">
+              <b style="font-family:var(--display);font-weight:600;font-size:1.05rem;display:block" id="doc-title">Residential Lease Agreement</b>
+              <small class="muted" id="doc-sub">Prepared for signature</small>
+            </div>
+            <span class="badge badge--sent" id="doc-badge">Ready</span>
+          </div>
+        </div>
+
+        <label class="check-row" style="margin-top:1rem" for="consent">
+          <input type="checkbox" id="consent">
+          <span class="box"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="meta"><b>I agree to sign electronically</b><small>I consent to use electronic records and signatures (E-SIGN / UETA).</small></span>
+        </label>
+
+        <div class="notice" id="config-notice" style="margin-top:1rem" hidden>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 8h.01M11 12h1v4h1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>Demo mode.</b> BOX Sign isn't connected yet, so signing is simulated. See <span class="mono">BOX-INTEGRATION.md</span> to go live with embedded signing.</span>
+        </div>
+
+        <div class="step-actions step-actions--end">
+          <button class="btn btn--primary" id="sign-btn" type="button" disabled>
+            Continue to signing
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <div class="trust-line">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v5c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V6l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Powered by BOX Sign · Legally binding e-signature
+        </div>
+      </section>
+
+      <!-- embedded signing host (BOX Sign iframe injected here when configured) -->
+      <section id="lease-sign" hidden>
+        <div class="step-head">
+          <span class="kicker">Sign</span>
+          <h2 tabindex="-1">Sign your lease</h2>
+        </div>
+        <div id="sign-host" style="min-height:60vh;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)"></div>
+      </section>
+
+      <!-- success -->
+      <section id="lease-done" hidden>
+        <div class="success">
+          <div class="success__seal">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v5c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V6l8-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.5 12l2.3 2.3L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h1>Lease signed!</h1>
+          <p>Your signed lease has been filed securely and a copy is on its way to your email. Welcome home.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/lease.js"></script>
+</body>
+
+</html>

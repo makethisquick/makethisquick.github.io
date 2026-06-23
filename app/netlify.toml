@@ -1,0 +1,32 @@
+# ============================================================
+# Renter Passport — its OWN Netlify site.
+# In Netlify: set "Base directory" = app  (so this file is the config).
+# makethisquick.com stays a separate, untouched deploy.
+# ============================================================
+
+[build]
+  command = "npm run build"
+  publish = "dist"            # relative to the base directory (app/)
+
+[functions]
+  node_bundler = "esbuild"
+  directory = "netlify/functions"
+  # box-node-sdk is a server-only dep; keep it external so esbuild doesn't inline it.
+  external_node_modules = ["box-node-sdk"]
+
+# NOTE on uploads: Netlify *synchronous* functions cap the request body at ~6 MB
+# and run for up to 10s. That covers typical IDs/statement pages. For larger
+# files, the production path is a pre-authorized direct-to-BOX upload URL
+# (see BOX-INTEGRATION.md → "Large files"). The client cap stays at 10 MB.
+
+# Security headers for the whole app.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    X-Robots-Tag = "noindex, nofollow"
+
+# SPA fallback is handled by public/_redirects so it ships in the publish dir.

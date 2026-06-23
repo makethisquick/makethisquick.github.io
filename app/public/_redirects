@@ -1,0 +1,3 @@
+# SPA fallback — every route renders the React app shell.
+# Functions and static assets are matched before this catch-all.
+/*    /index.html   200

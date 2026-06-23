@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Form definitions</title>
+</head>
+<body>
+  <!--
+    Netlify Forms detection stub.
+    Netlify scans deployed HTML for forms marked data-netlify="true" and
+    provisions a server-side endpoint at deploy time. The Renter Passport
+    wizard POSTs to this form name with fetch() — no database required;
+    submissions show up in the Netlify dashboard and can email the landlord.
+    This file is never linked in the UI; it only exists for detection.
+  -->
+  <form name="renter-application" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="bot-field">
+    <input type="text" name="invite">
+    <input type="email" name="tenantEmail">
+    <input type="text" name="traveling">
+    <input type="text" name="businessDomain">
+    <input type="text" name="facilityName">
+    <input type="text" name="contractStart">
+    <input type="text" name="contractEnd">
+    <input type="text" name="shift">
+    <input type="text" name="legalName">
+    <input type="text" name="aliases">
+    <input type="text" name="dob">
+    <textarea name="taxHome"></textarea>
+    <input type="text" name="household">
+    <input type="text" name="pets">
+    <input type="text" name="vehicle">
+    <textarea name="documents"></textarea>
+  </form>
+</body>
+</html>

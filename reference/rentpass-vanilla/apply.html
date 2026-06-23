@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Build your Renter Passport · MakeThisQuick</title>
+  <meta name="description" content="Build your verified Renter Passport in about 3 minutes.">
+  <meta name="theme-color" content="#060A18">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link href="../assets/css/site.css" rel="stylesheet">
+  <link href="assets/app.css" rel="stylesheet">
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="appbar">
+    <span class="appbar__brand">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2l8 4v5c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <b>Renter<span>Passport</span></b>
+    </span>
+    <div class="appbar__right">
+      <span class="appbar__tag" id="ctx-tag">Application</span>
+    </div>
+  </header>
+
+  <main class="app-main" id="main">
+    <div class="shell">
+
+      <!-- progress rail (hidden on welcome + success) -->
+      <div class="wiz-progress" id="progress" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Application progress" hidden>
+        <span class="wiz-progress__seg" data-seg="0"></span>
+        <span class="wiz-progress__seg" data-seg="1"></span>
+        <span class="wiz-progress__seg" data-seg="2"></span>
+        <span class="wiz-progress__seg" data-seg="3"></span>
+      </div>
+
+      <!-- ========== STEP 1 — WELCOME ========== -->
+      <section class="wiz-step" data-step="welcome">
+        <div class="welcome">
+          <div class="welcome__seal">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v5c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V6l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="kicker" id="ctx-line">Verified renter onboarding</span>
+          <h1>Let's build your <em>verified Renter Passport.</em></h1>
+          <p>This takes about 3 minutes and packages your application perfectly for the property team.</p>
+          <button class="btn btn--primary" id="start-btn" style="align-self:center;padding:1rem 1.8rem;font-size:1.05rem">
+            Create My Passport
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="loadbar" id="loadbar"><span class="loadbar__fill"></span></div>
+          <p class="welcome__hint" id="welcome-hint">Starting automatically in a moment…</p>
+        </div>
+      </section>
+
+      <!-- ========== STEP 2A — TRAVEL / BUSINESS ========== -->
+      <section class="wiz-step" data-step="travel" hidden>
+        <div class="step-head">
+          <span class="kicker">About your move · 1 of 3</span>
+          <h2 tabindex="-1">A few quick questions</h2>
+          <p>This helps us tailor your Passport. Nothing here is a credit check.</p>
+        </div>
+        <form class="step-body" id="form-travel" novalidate>
+          <div class="field">
+            <span class="field__label">Are you relocating for work or a business assignment?</span>
+            <div class="choices" role="radiogroup" aria-label="Traveling for business">
+              <label class="choice"><input type="radio" name="traveling" value="yes"><span class="choice__face">Yes</span></label>
+              <label class="choice"><input type="radio" name="traveling" value="no"><span class="choice__face">No</span></label>
+            </div>
+          </div>
+
+          <div class="reveal-block" id="biz-block">
+            <div class="field">
+              <label for="biz-domain">What field is the assignment in?</label>
+              <select class="select" id="biz-domain" name="businessDomain">
+                <option value="">Select a field…</option>
+                <option>Healthcare</option>
+                <option>Technology</option>
+                <option>Engineering</option>
+                <option>Education</option>
+                <option>Finance</option>
+                <option>Skilled trades</option>
+                <option>Government</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="reveal-block field" id="facility-block">
+              <label for="facility">Where is your upcoming healthcare assignment?</label>
+              <input class="input" id="facility" name="facilityName" type="text" placeholder="Hospital or facility name" autocomplete="off">
+              <p class="field__hint">The hospital, clinic, or facility name on your placement.</p>
+            </div>
+
+            <div class="field">
+              <span class="field__label">Tentative contract dates</span>
+              <div class="row-2">
+                <div>
+                  <input class="input" id="c-start" name="contractStart" type="date" aria-label="Contract start date">
+                  <p class="field__hint">Start</p>
+                </div>
+                <div>
+                  <input class="input" id="c-end" name="contractEnd" type="date" aria-label="Contract end date">
+                  <p class="field__hint">End</p>
+                </div>
+              </div>
+              <div class="field__error" data-err="dates" aria-live="polite"></div>
+            </div>
+
+            <div class="field">
+              <span class="field__label">What is your shift schedule?</span>
+              <div class="choices" role="radiogroup" aria-label="Shift schedule">
+                <label class="choice"><input type="radio" name="shift" value="Day"><span class="choice__face">Day</span></label>
+                <label class="choice"><input type="radio" name="shift" value="Night"><span class="choice__face">Night</span></label>
+                <label class="choice"><input type="radio" name="shift" value="Mid"><span class="choice__face">Mid</span></label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- ========== STEP 2B — IDENTITY / KYC ========== -->
+      <section class="wiz-step" data-step="identity" hidden>
+        <div class="step-head">
+          <span class="kicker">Identity · 2 of 3</span>
+          <h2 tabindex="-1">Let's confirm who you are</h2>
+          <p>Matches the verification the property team runs. Your details are encrypted in transit.</p>
+        </div>
+        <form class="step-body" id="form-identity" novalidate>
+          <div class="field">
+            <label for="legal-name">Legal full name <span class="field__req">*</span></label>
+            <input class="input" id="legal-name" name="legalName" type="text" autocomplete="name" placeholder="As it appears on your ID" required>
+            <div class="field__error" data-err="legal-name" aria-live="polite"></div>
+          </div>
+          <div class="field">
+            <label for="aliases">Any aliases or previous legal names?</label>
+            <input class="input" id="aliases" name="aliases" type="text" placeholder="Maiden name, prior name… (or leave blank)" autocomplete="off">
+            <p class="field__hint">Helps the background check run thoroughly and accurately.</p>
+          </div>
+          <div class="field">
+            <label for="dob">Date of birth <span class="field__req">*</span></label>
+            <input class="input" id="dob" name="dob" type="date" autocomplete="bday" required>
+            <div class="field__error" data-err="dob" aria-live="polite"></div>
+          </div>
+          <div class="field">
+            <label for="tax-home">Permanent tax home address <span class="field__req">*</span></label>
+            <textarea class="textarea" id="tax-home" name="taxHome" placeholder="Street, city, state, ZIP" autocomplete="street-address" required></textarea>
+            <p class="field__hint">Confirms you qualify for tax-free stipends on a travel assignment.</p>
+            <div class="field__error" data-err="tax-home" aria-live="polite"></div>
+          </div>
+        </form>
+      </section>
+
+      <!-- ========== STEP 2C — HOUSEHOLD ========== -->
+      <section class="wiz-step" data-step="household" hidden>
+        <div class="step-head">
+          <span class="kicker">Household · 3 of 3</span>
+          <h2 tabindex="-1">Who's coming with you?</h2>
+          <p>So the property team can match you to the right unit.</p>
+        </div>
+        <form class="step-body" id="form-household" novalidate>
+          <div class="field">
+            <span class="field__label">Who is traveling with you?</span>
+            <div class="choices choices--grid" role="radiogroup" aria-label="Who is traveling with you">
+              <label class="choice"><input type="radio" name="household" value="Solo"><span class="choice__face">Just me</span></label>
+              <label class="choice"><input type="radio" name="household" value="Partner"><span class="choice__face">Partner</span></label>
+              <label class="choice"><input type="radio" name="household" value="Coworker"><span class="choice__face">Coworker</span></label>
+              <label class="choice"><input type="radio" name="household" value="Family"><span class="choice__face">Family</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field__label">Any pets joining you?</span>
+            <div class="choices" role="radiogroup" aria-label="Pets">
+              <label class="choice"><input type="radio" name="pets" value="yes"><span class="choice__face">Yes</span></label>
+              <label class="choice"><input type="radio" name="pets" value="no"><span class="choice__face">No</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field__label">Bringing a vehicle that needs parking?</span>
+            <div class="choices" role="radiogroup" aria-label="Vehicle parking">
+              <label class="choice"><input type="radio" name="vehicle" value="yes"><span class="choice__face">Yes</span></label>
+              <label class="choice"><input type="radio" name="vehicle" value="no"><span class="choice__face">No</span></label>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- ========== STEP 3 — UPLOADS ========== -->
+      <section class="wiz-step" data-step="uploads" hidden>
+        <div class="step-head">
+          <span class="kicker">Verification hub</span>
+          <h2 tabindex="-1">Add your documents</h2>
+          <p>Upload what you have on hand. You can skip the bank statement and W-2 for now and add them later.</p>
+        </div>
+        <div class="step-body">
+          <div class="uploads" id="uploads">
+            <!-- Slot 1 — Contract -->
+            <div class="slot" data-slot="contract" data-kind="document">
+              <div class="slot__head">
+                <span class="slot__ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3h6l4 4v14H6V5a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v4h4M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                <div class="slot__txt">
+                  <b>Travel / job contract</b>
+                  <small>Your signed agency agreement or placement letter.</small>
+                </div>
+                <span class="slot__status" data-status>Recommended</span>
+              </div>
+              <div class="slot__actions">
+                <label class="slot__pick"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4l4 4M5 20h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Upload<input type="file" accept=".pdf,.jpg,.jpeg,.png,.heic,.heif,application/pdf,image/*"></label>
+              </div>
+              <div class="slot__file"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="name"></span><span class="size"></span><button type="button" class="x" aria-label="Remove file"><svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+              <p class="slot__err" data-err></p>
+            </div>
+
+            <!-- Slot 2 — Government ID -->
+            <div class="slot" data-slot="id" data-kind="id">
+              <div class="slot__head">
+                <span class="slot__ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="11" r="2" stroke="currentColor" stroke-width="1.5"/><path d="M14 10h4M14 13h3M5.5 16.5c.6-1.6 4.4-1.6 5 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                <div class="slot__txt">
+                  <b>Government photo ID</b>
+                  <small>Driver's license or passport.</small>
+                </div>
+                <span class="slot__status" data-status>Recommended</span>
+              </div>
+              <div class="slot__actions">
+                <label class="slot__pick"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4l4 4M5 20h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Upload<input type="file" accept=".pdf,.jpg,.jpeg,.png,.heic,.heif,application/pdf,image/*"></label>
+              </div>
+              <div class="slot__file"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="name"></span><span class="size"></span><button type="button" class="x" aria-label="Remove file"><svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+              <p class="slot__err" data-err></p>
+            </div>
+
+            <!-- Slot 3 — Proof of liquidity (skippable) -->
+            <div class="slot" data-slot="bank" data-kind="document" data-skippable="1">
+              <div class="slot__head">
+                <span class="slot__ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 10l9-5 9 5M5 10v8h14v-8M4 18h16M9 13v2M12 13v2M15 13v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <div class="slot__txt">
+                  <b>Proof of liquidity</b>
+                  <small>First page of your most recent bank statement.</small>
+                </div>
+                <span class="slot__status" data-status>Optional</span>
+              </div>
+              <div class="slot__actions">
+                <label class="slot__pick"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4l4 4M5 20h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Upload<input type="file" accept=".pdf,.jpg,.jpeg,.png,.heic,.heif,application/pdf,image/*"></label>
+                <label class="skip-toggle"><input type="checkbox" data-skip><span class="skip-toggle__box"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Skip for now</label>
+              </div>
+              <div class="slot__file"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="name"></span><span class="size"></span><button type="button" class="x" aria-label="Remove file"><svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+              <p class="slot__err" data-err></p>
+            </div>
+
+            <!-- Slot 4 — Historical income (skippable) -->
+            <div class="slot" data-slot="income" data-kind="document" data-skippable="1">
+              <div class="slot__head">
+                <span class="slot__ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h9l3 3v15H6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8h4M9 11h6M9 14h6M9 17h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                <div class="slot__txt">
+                  <b>Historical income</b>
+                  <small>Your most recent W-2 or last two paystubs.</small>
+                </div>
+                <span class="slot__status" data-status>Optional</span>
+              </div>
+              <div class="slot__actions">
+                <label class="slot__pick"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4l4 4M5 20h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Upload<input type="file" accept=".pdf,.jpg,.jpeg,.png,.heic,.heif,application/pdf,image/*"></label>
+                <label class="skip-toggle"><input type="checkbox" data-skip><span class="skip-toggle__box"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Skip for now</label>
+              </div>
+              <div class="slot__file"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="name"></span><span class="size"></span><button type="button" class="x" aria-label="Remove file"><svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+              <p class="slot__err" data-err></p>
+            </div>
+          </div>
+
+          <div class="notice notice--spark" style="margin-top:1.1rem">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v5c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V6l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Files are checked for type and size, then stored securely in your private folder. We never share them without your consent.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== STEP 4 — SUCCESS ========== -->
+      <section class="wiz-step" data-step="success" hidden>
+        <div class="success">
+          <div class="success__seal">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v5c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V6l8-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.5 12l2.3 2.3L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h1>Passport Secured!</h1>
+          <p>Your Renter Passport has been compiled. We're verifying your details and will connect you with the property team shortly.</p>
+          <div class="success__receipt" id="receipt" aria-label="Submission summary"></div>
+          <div id="lease-next" class="hidden" style="margin-top:.4rem">
+            <a class="btn btn--spark" id="lease-link" href="#" style="justify-content:center">
+              Continue to your lease
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- shared sticky actions (hidden on welcome + success) -->
+      <div class="step-actions" id="actions" hidden>
+        <button class="btn btn--ghost btn--icon" id="back-btn" type="button" aria-label="Go back" hidden>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="btn btn--primary" id="next-btn" type="button">
+          <span id="next-label">Continue</span>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="trust-line" id="trust" hidden>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v5c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V6l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Encrypted in transit · You control your data
+      </div>
+
+    </div>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/apply.js"></script>
+</body>
+
+</html>

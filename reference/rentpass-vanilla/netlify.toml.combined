@@ -1,0 +1,46 @@
+# ============================================================
+# MakeThisQuick — Netlify configuration
+# Static marketing site + Renter Passport app + serverless
+# functions for BOX (file storage) and BOX Sign (e-signature).
+# ============================================================
+
+[build]
+  # The repo is already a static site — nothing to compile.
+  publish = "."
+  functions = "netlify/functions"
+
+# Serverless functions: bump the body size + timeout so document
+# uploads (up to ~10 MB) and BOX round-trips have room.
+[functions]
+  node_bundler = "esbuild"
+  # included_files = []
+
+[functions."box-upload"]
+  # Allow larger multipart bodies for document uploads.
+  # (Netlify default sync function limit is 6 MB request body.)
+
+# Security headers for the whole site.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# The app pages should never be indexed.
+[[headers]]
+  for = "/app/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# Pretty paths (optional): /app/apply -> /app/apply.html
+[[redirects]]
+  from = "/app/apply"
+  to = "/app/apply.html"
+  status = 200
+
+[[redirects]]
+  from = "/app/lease"
+  to = "/app/lease.html"
+  status = 200

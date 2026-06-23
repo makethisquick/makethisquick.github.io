@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Renter Passport — Landlord Panel · MakeThisQuick</title>
+  <meta name="description" content="Invite tenants to complete a verified Renter Passport application and lease — powered by MakeThisQuick.">
+  <meta name="theme-color" content="#060A18">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link href="../assets/css/site.css" rel="stylesheet">
+  <link href="assets/app.css" rel="stylesheet">
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ===== App bar ===== -->
+  <header class="appbar">
+    <a class="appbar__brand" href="index.html" aria-label="Renter Passport home">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2l8 4v5c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <b>Renter<span>Passport</span></b>
+    </a>
+    <div class="appbar__right">
+      <span class="appbar__tag">Landlord panel</span>
+    </div>
+  </header>
+
+  <main class="app-main" id="main">
+    <div class="shell shell--wide">
+
+      <div class="panel-head">
+        <div>
+          <span class="kicker">Verified renter onboarding</span>
+          <h1 style="margin-top:.6rem">Invite a tenant</h1>
+          <p>Send a private link. Your tenant builds a verified Renter Passport — application and lease — in a few guided minutes.</p>
+        </div>
+        <a class="btn btn--ghost btn--sm" href="../index.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          MakeThisQuick
+        </a>
+      </div>
+
+      <div class="stat-row" id="stats" aria-label="Invite summary">
+        <div class="stat-box"><b id="stat-total">0</b><span>Invites sent</span></div>
+        <div class="stat-box"><b id="stat-apps">0</b><span>Applications in</span></div>
+        <div class="stat-box"><b id="stat-leases">0</b><span>Leases signed</span></div>
+      </div>
+
+      <div class="app-grid">
+        <!-- create -->
+        <section class="card card--raised" aria-labelledby="new-h">
+          <h2 id="new-h" style="font-family:var(--display);font-size:1.2rem;margin-bottom:1.1rem">New invite</h2>
+          <form id="invite-form" novalidate>
+            <div class="field">
+              <label for="t-name">Tenant name <span class="field__req">*</span></label>
+              <input class="input" id="t-name" name="tenantName" type="text" autocomplete="name" placeholder="Jordan Rivera" required>
+              <div class="field__error" data-err="t-name" aria-live="polite"></div>
+            </div>
+            <div class="field">
+              <label for="t-email">Tenant email <span class="field__req">*</span></label>
+              <input class="input" id="t-email" name="tenantEmail" type="email" inputmode="email" autocomplete="email" placeholder="jordan@email.com" required>
+              <div class="field__error" data-err="t-email" aria-live="polite"></div>
+            </div>
+            <div class="field">
+              <label for="t-prop">Property / unit <span class="muted">(optional)</span></label>
+              <input class="input" id="t-prop" name="property" type="text" placeholder="1420 Maple Ave, Unit 3B">
+            </div>
+
+            <div class="field">
+              <span class="field__label">Request these steps</span>
+              <label class="check-row">
+                <input type="checkbox" name="application" checked>
+                <span class="box"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="meta"><b>Application</b><small>Renter Passport — identity, history & documents</small></span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" name="lease" checked>
+                <span class="box"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="meta"><b>Lease</b><small>Review & e-sign the lease agreement</small></span>
+              </label>
+              <div class="field__error" data-err="steps" aria-live="polite"></div>
+            </div>
+
+            <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;margin-top:.4rem">
+              Create invite
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+
+          <div class="notice" style="margin-top:1.1rem">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 8h.01M11 12h1v4h1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Prototype storage: invites live in <b>this browser</b> for now. Submissions are also captured server-side via Netlify Forms. Wire up a database to sync across devices — see the project README.</span>
+          </div>
+        </section>
+
+        <!-- list -->
+        <section aria-labelledby="list-h">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem">
+            <h2 id="list-h" style="font-family:var(--display);font-size:1.2rem">Your invites</h2>
+            <button class="btn btn--ghost btn--sm" id="seed-btn" type="button">Add sample</button>
+          </div>
+          <div class="invite-list" id="invite-list"></div>
+        </section>
+      </div>
+
+      <footer style="margin-top:auto;padding-top:2.5rem">
+        <p class="footer__legal mono" style="font-size:.72rem;color:var(--muted-2)">© <span data-year>2026</span> MakeThisQuick LLC · Renter Passport</p>
+      </footer>
+    </div>
+  </main>
+
+  <!-- invite card template -->
+  <template id="invite-tpl">
+    <article class="invite">
+      <div class="invite__top">
+        <div class="invite__who">
+          <b data-name></b>
+          <small data-email></small>
+          <small data-prop class="muted" style="display:block"></small>
+        </div>
+        <button class="btn btn--icon btn--danger-ghost btn--sm" data-del title="Delete invite" aria-label="Delete invite">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2m-9 0l1 13a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2l1-13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="invite__steps" data-steps></div>
+      <div class="invite__actions">
+        <div class="invite__link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" style="width:15px;height:15px;color:var(--muted-2);flex:none"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="url" data-url></span>
+        </div>
+        <button class="btn btn--primary btn--sm" data-copy type="button">Copy link</button>
+        <a class="btn btn--ghost btn--sm" data-open target="_blank" rel="noopener">Open</a>
+      </div>
+    </article>
+  </template>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/landlord.js"></script>
+</body>
+
+</html>
