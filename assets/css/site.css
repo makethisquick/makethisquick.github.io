@@ -609,4 +609,5 @@ body.menu-open .mobile-menu { opacity: 1; transform: translateY(0); pointer-even
 .legal ul, .legal ol { color: #C2C8E6; line-height: 1.8; margin: 0 0 1.1rem; padding-left: 1.3rem; }
 .legal li { margin-bottom: .4rem; }
 .legal strong, .legal b { color: var(--paper); }
+.legal__meta { font-family: var(--mono, monospace); font-size: .8rem; color: #8A92B8; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 1.6rem; }
 .legal hr { border: 0; border-top: 1px solid var(--line); margin: 2.4rem 0; }
